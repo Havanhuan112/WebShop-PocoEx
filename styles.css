@@ -1,0 +1,819 @@
+/* Tổng thể của trang */
+body {
+    background: linear-gradient(to right, #1d4350, #a43931); /* Màu nền gradient */
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hiệu ứng particles */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+/* Khung menu chính */
+.menu {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Tiêu đề với hiệu ứng phát sáng */
+.glow-text {
+    font-size: 3rem;
+    text-shadow: 0 0 5px #ff9, 0 0 15px #f39, 0 0 20px #c6f;
+}
+
+/* Chữ chạy marquee */
+.scrolling-text {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+}
+
+/* Vùng cuộn bảng giá */
+.scroll-container {
+    overflow-y: auto;
+    max-height: 600px;
+    margin: 20px auto;
+    width: 90%;
+}
+
+/* Bảng giá files */
+.pricing {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Mỗi mục trong bảng giá */
+.pricing-item {
+    margin: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pricing-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Hình ảnh file */
+.pricing-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Nút mua */
+.pricing-item button {
+    background: linear-gradient(45deg, #ff9, #f39);
+    border: none;
+    padding: 10px;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pricing-item button:hover {
+    background: linear-gradient(45deg, #f39, #ff9);
+}
+
+/* Khu vực liên kết mạng xã hội */
+.social-links {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.social-links h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #ff9;
+}
+
+.social-links .links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-links .social-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.social-links .social-btn i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.social-links .social-btn:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Phần hiển thị thông báo */
+.notification {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Điều khiển nhạc (nếu bạn muốn thêm điều khiển nhạc) */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-control button {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.music-control button:hover {
+    background: linear-gradient(135deg, #fad0c4, #ff9a9e);
+}
+
+/* Phần nút Đăng nhập và Đăng ký */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.auth-btn {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.auth-btn:hover {
+    background-color: #ff4500;
+}
+
+/* Form đăng ký */
+.register-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+.register-form h3 {
+    margin-bottom: 15px;
+}
+
+.register-form input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.register-form button {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+    background-color: #ff4500;
+}
+
+/* Thông báo yêu cầu đăng nhập */
+.login-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: none;
+}
+
+.login-prompt button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-prompt button:hover {
+    background-color: #ff4500;
+}
+
+/* Form đăng nhập */
+.login-form, .register-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: none; /* Form này sẽ ẩn mặc định */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.form-container h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ff6347;
+}
+/* Các input và button của form */
+.login-form input, .register-form input {
+    width: 80%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus, .register-form input:focus {
+    border-color: #ff6347;
+}
+
+.login-form button, .register-form button {
+    width: 80%;
+    padding: 15px;
+    background-color: #ff6347;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-form button:hover, .register-form button:hover {
+    background-color: #ff4500;
+}
+
+.login-form button[type="button"], .register-form button[type="button"] {
+    background-color: #555;
+    margin-top: 15px;
+}
+
+.login-form button[type="button"]:hover, .register-form button[type="button"]:hover {
+    background-color: #444;
+}
+
+/* Đóng form */
+.hidden {
+    display: none;
+}
+/* Watermark */
+footer .watermark {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+/* Phần hiển thị modal thông báo thanh toán */
+.payment-notification {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: opacity 0.5s ease;
+}
+
+.notification-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    margin: 100px auto;
+    color: #333;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.payment-notification h3 {
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+.payment-notification p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.payment-notification button {
+    background-color: #ff6347;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-notification button:hover {
+    background-color: #ff4500;
+}
+
+.payment-notification .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.payment-notification .close-btn:hover {
+    color: #ff6347;
+}
+/* Thanh menu bên trái */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Ẩn menu bên trái khi không cần thiết */
+    height: 100%;
+    width: 200px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    z-index: 1000;
+    transition: left 0.3s ease; /* Thêm hiệu ứng khi mở/đóng menu */
+}
+
+/* Nút menu */
+.menu-toggle {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Danh sách menu */
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px; /* Đẩy menu xuống dưới nút */
+}
+
+.side-menu li {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.side-menu a {
+    display: block;
+    color: white;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.side-menu a:hover {
+    background-color: #ff6347;
+    border-radius: 5px;
+}
+
+/* Để tránh nội dung bị che khuất bởi thanh menu */
+body {
+    margin-left: 0;
+    transition: margin-left 0.3s ease; /* Thêm hiệu ứng khi nội dung bị dịch chuyển */
+}
+
+/* Để nội dung không bị che khuất khi menu mở */
+body.menu-open {
+    margin-left: 200px; /* Dịch chuyển nội dung khi menu mở */
+}
+
+/* Khi menu được mở */
+.side-menu.open {
+    left: 0; /* Hiển thị menu */
+}
+/* Thêm hiệu ứng chuyển động cho phần thanh toán */
+.payment-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1001;
+}
+
+.payment-info.show {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Nút đóng thông tin thanh toán */
+.payment-info .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Nút mua ngay */
+.buy-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #218838;
+}
+/* Thông báo thanh toán ở giữa màn hình */
+.payment-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    display: none; /* Ẩn mặc định */
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.payment-notification span {
+    display: inline-block;
+    color: #fff;
+}
+/* CSS cho thông báo thanh toán */
+.payment-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 9999;
+}
+
+.payment-notification.hidden {
+    display: none;
+}
+
+.payment-notification .notification-content {
+    text-align: center;
+}
+
+.payment-notification h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #FFD700; /* Vàng để tạo điểm nhấn */
+}
+
+.payment-notification p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    background: linear-gradient(to left, #FF5733, #33FF57, #3357FF, #FF33A6); /* Gradient nhiều màu */
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+}
+
+.payment-notification .close-btn {
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.payment-notification .close-btn:hover {
+    color: red;
+}
+/* CSS cho Thông Báo Toàn Màn Hình */
+.fullscreen-notification {
+    display: none;  /* Mặc định ẩn */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    animation: fadeInScale 1.5s ease-out;
+}
+
+.notification-content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    padding: 30px;
+    background-color: #333;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInScale 1.5s ease-out forwards; /* Áp dụng hiệu ứng fade-in và scale */
+}
+
+.notification-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    animation: typing 3s steps(30) 1s 1 normal both;  /* Hiệu ứng gõ chữ */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #fff;
+}
+
+.notification-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    animation: colorChange 2s infinite alternate;  /* Hiệu ứng đổi màu chữ */
+}
+
+.link-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.link-btn:hover {
+    background-color: #218838;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+/* Hiệu ứng fade-in + scale */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Hiệu ứng gõ chữ */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Hiệu ứng đổi màu chữ */
+@keyframes colorChange {
+    0% {
+        color: white;
+    }
+    50% {
+        color: #f39c12; /* Màu vàng */
+    }
+    100% {
+        color: #e74c3c; /* Màu đỏ */
+    }
+}
+/* Style cho modal thanh toán */
+.payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền bán trong suốt */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.payment-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.payment-modal h3 {
+    color: #333;
+    font-size: 24px;
+}
+
+.payment-modal p {
+    font-size: 16px;
+    color: #555;
+}
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Button "Mua Ngay" */
+.buy-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buy-btn:hover {
+    background-color: #45a049;
+}
+
+/* Các kiểu khác cho thông báo và các phần tử */
+.notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.notification-icon {
+    width: 30px;
+    margin-right: 10px;
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Huấn Hà</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!-- Thông tin thanh toán ngân hàng (modal) -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="close-btn" onclick="closePaymentForm()">&times;</span>
+            <h3>Thông Tin Thanh Toán</h3>
+            <p><strong>Tên File:</strong> <span id="fileName">File A</span></p>
+            <p><strong>Giá:</strong> <span id="filePrice">100,000 VND</span></p>
+            <p><strong>Ngân Hàng:</strong> Mbbank - 0325575642 - HA VAN HUAN</p>
+            <p><strong>Ví Momo:</strong> 0325575642 - Hà Văn Huấn</p>
+            <p><strong>Email:</strong> vanhuanha56@gmail.com</p>
+<a href="https://www.facebook.com/share/1A5NB5kXrn/?mibextid=wwXIfr" target="_blank" class="link-lable">Faceboock | Huấn Hà</a>
+            <button class="close-btn" onclick="closePaymentForm()">Đóng</button>
+        </div>
+    </div
+
+<!-- Thanh thông báo người dùng -->
+    <div class="profile-info">
+        <p><strong>Profile:</strong> <span id="username"></span></p>
+        <p><strong>Địa chỉ IP:</strong> <span id="ipAddress"></span></p>
+        <p><strong>Thời gian:</strong> <span id="currentTime"></span></p>
+    </div>
+
+    <!-- Hiển thị số người truy cập -->
+    <div class="visitor-count">
+        <p>Số người truy cập: <span id="visitorCount"></span></p>
+    </div>
+
+<!-- Thông Báo Toàn Màn Hình -->
+    <div id="fullScreenNotification" class="fullscreen-notification">
+        <div class="notification-content">
+            <p>Chào Các Thương Đế Của Huấn Hà Nhé 🫶 </p>
+            <p>Mua Gì Thì Hãy Tham Khảo Giá Bên dưới nhé</p>
+            <a href="https://www.facebook.com/share/1A5NB5kXrn/?mibextid=wwXIfr" target="_blank" class="link-lable">Faceboock | Huấn Hà</a>
+            <button class="close-btn" onclick="closeNotification()">Đóng</button>
+        </div>
+    </div>
+<!-- Thanh menu bên trái -->
+    <div class="side-menu" id="sideMenu">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul id="menuList">
+            <li><a href="#home">Trang Chủ</a></li>
+            <li><a href="#files">Files</a></li>
+            <li><a href="#pricing">Bảng Giá</a></li>
+            <li><a href="#about">Giới Thiệu</a></li>
+            <li><a href="#contact">Liên Hệ</a></li>
+        </ul>
+    </div>
+    <!-- Form đăng ký -->
+    <div class="register-form hidden" id="registerForm">
+        <h3>Tạo Tài Khoản</h3>
+        <form id="registerFormElement" onsubmit="register(event)">
+            <input type="text" id="username" placeholder="Tên người dùng" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng ký</button>
+            <button type="button" onclick="hideRegisterForm()">Đóng</button>
+        </form>
+    </div>
+<!-- Form đăng nhập -->
+    <div class="login-form hidden" id="loginForm">
+        <h3>Đăng Nhập</h3>
+        <form id="loginFormElement" onsubmit="login(event)">
+            <input type="text" id="loginUsername" placeholder="Tên người dùng" required>
+            <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng nhập</button>
+            <button type="button" onclick="hideLoginForm()">Đóng</button>
+        </form>
+    </div>
+<!-- Phần tử âm thanh tự động phát -->
+<audio id="backgroundMusic" autoplay loop>
+    <source src="audio/your-music-file.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+</audio>
+    <!-- Hiệu ứng particles -->
+    <div id="particles-js"></div>
+
+    <!-- Khung menu chính -->
+    <div class="menu">
+        <h1 class="glow-text">SHOP POCO EX</h1>
+        <marquee class="scrolling-text">Chào Các Thương đế Đã Đến Với Shop Của Mình Nhé Hãy Tham Khảo Và ủng hộ tớ nhé 🍁 </marquee>
+
+        <!-- Vùng cuộn cho bảng giá files -->
+        <div class="scroll-container">
+            <div class="pricing">
+                <!-- File 1 -->
+                <div class="pricing-item">
+                    <img src="https://i.imgur.com/jURokpN.png" alt="File 1">
+                    <p>Aimlock Stx - 100,000 VND</p>
+                    <button class="buy-btn" onclick="showPaymentInfo('File Aimlock', '100,000 VND')">Mua Ngay</button>
+                </div>
+
+                <!-- File 2 -->
+                <div class="pricing-item">
+                    <img src="https://i.imgur.com/q358ZVI.png" alt="File 2">
+                    <p>File - 200,000 VND</p>
+                    <button class="buy-btn" onclick="showPaymentInfo('File Aimvip', '200,000 VND')">Mua Ngay</button>
+                </div>
+
+                <!-- File 3 -->
+                <div class="pricing-item">
+                    <img src="https://i.imgur.com/R9JT5ev.png" alt="File 3">
+                    <p>File - 300,000 VND</p>
+                    <button class="buy-btn" onclick="showPaymentInfo('File Aim FullMap', '300,000 VND')">Mua Ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Liên kết mạng xã hội -->
+    <div class="social-links">
+        <h3>Liên Hệ Với Chúng Tôi</h3>
+        <div class="links">
+            <a href="https://www.facebook.com/share/19dydzr7YA/?mibextid=wwXIfr" target="_blank" class="social-btn facebook">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="https://zaloapp.com/qr/p/1s3nnmtozvd1l?src=qr" target="_blank" class="social-btn zalo">
+                <i class="fas fa-comment"></i> Zalo
+            </a>
+            <a href="https://t.me/suporthuanha" target="_blank" class="social-btn telegram">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+            <a href="https://www.tiktok.com/@exzed.huanha?_t=8sZHX9I4bvE&_r=1" target="_blank" class="social-btn tiktok">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+        </div>
+    </div>
+
+<!-- Hiển thị thông báo khi vào trang web -->
+    <div id="welcome-notification" class="notification">
+        <img src="icon.png" alt="icon" class="notification-icon"> <!-- Thêm icon -->
+        <span>Chào Các Thương Đế Của Huấn Nhé 🫶</span>
+    </div>
+    <!-- Chữ watermark -->
+    <footer>
+        <p class="watermark">© 2024 Cửa hàng bán files. Bản quyền thuộc về chúng tôi.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Particles.js loaded!');
+        });
+    </script>
+    <script>
+        // Hiển thị thông báo toàn màn hình khi vào web
+        window.onload = function() {
+            document.getElementById('fullScreenNotification').style.display = 'block';
+        }
+
+        // Đóng thông báo
+        function closeNotification() {
+            document.getElementById('fullScreenNotification').style.display = 'none';
+        }
+    </script>
+   <script>
+        
+
+        // Hàm hiển thị thông tin thanh toán khi nhấn vào nút "Mua Ngay"
+        function showPaymentInfo(fileName, filePrice) {
+            // Cập nhật thông tin sản phẩm và giá
+            document.getElementById("fileName").innerText = fileName;
+            document.getElementById("filePrice").innerText = filePrice;
+
+            // Hiển thị modal
+            document.getElementById("paymentModal").style.display = "block";
+        }
+
+        // Hàm đóng modal khi nhấn nút "Đóng"
+        function closePaymentForm() {
+            document.getElementById("paymentModal").style.display = "none";
+        }
+
+        // Đảm bảo rằng khi người dùng nhấn ra ngoài modal, nó sẽ đóng lại
+        window.onclick = function(event) {
+            var modal = document.getElementById("paymentModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+   <script>
+        // Tạo danh sách tên ngẫu nhiên
+        const usernames = ['Nguyễn Văn A', 'Trần Thị B', 'Lê Minh C', 'Phan Thanh D', 'Hoàng Đăng E'];
+
+        // Tạo địa chỉ IP ngẫu nhiên
+        function generateRandomIP() {
+            let ip = '';
+            for (let i = 0; i < 4; i++) {
+                ip += Math.floor(Math.random() * 256);
+                if (i < 3) ip += '.';
+            }
+            return ip;
+        }
+
+        // Tạo hàm để hiển thị thông tin Profile và số người truy cập
+        window.onload = function() {
+            // Lấy tên ngẫu nhiên từ danh sách
+            const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
+            document.getElementById("username").innerText = randomUsername;
+
+            // Lấy địa chỉ IP ngẫu nhiên
+            const randomIP = generateRandomIP();
+            document.getElementById("ipAddress").innerText = randomIP;
+
+            // Hiển thị thời gian hiện tại
+            const currentTime = new Date().toLocaleString();
+            document.getElementById("currentTime").innerText = currentTime;
+
+            // Hiển thị số người truy cập
+            let visitorCount = localStorage.getItem("visitorCount");
+            if (!visitorCount) {
+                visitorCount = 0;
+            }
+            visitorCount++;
+            localStorage.setItem("visitorCount", visitorCount);
+            document.getElementById("visitorCount").innerText = visitorCount;
+        };
+    </script>
+</body>
+</html>
